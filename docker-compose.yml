@@ -54,7 +54,7 @@ services:
             - MYSQL_USER=my_user
         ports:
             - "3307:3306"
-        command: mysqld
+        command: mysqld --ndb-nodeid=10
         volumes:
             - "./cnf/my.cnf:/etc/my.cnf"
             - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"

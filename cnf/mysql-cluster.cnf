@@ -5,20 +5,20 @@ IndexMemory=18M
 
 
 [ndb_mgmd]
-NodeId=1
+NodeId=2
 hostname=172.50.0.2
 datadir=/var/lib/mysql
 
 [ndbd]
-NodeId=2
+NodeId=3
 hostname=172.50.0.3
 datadir=/var/lib/mysql
 
 [ndbd]
-NodeId=3
+NodeId=4
 hostname=172.50.0.4
 datadir=/var/lib/mysql
 
 [mysqld]
-NodeId=4
+NodeId=10
 hostname=172.50.0.10
