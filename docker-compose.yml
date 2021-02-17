@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+    database-manager:
+        container_name: db_manager
+        image: mysql/mysql-cluster
+        networks:
+            database_net:
+                ipv4_address: 172.28.0.2
+        command: ndbd #ndb_mgmd --ndb-nodeid=2
+        ports:
+            - "1186:1186"
+        volumes:
+            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/my.cnf:/etc/my.cnf"
+            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
+
+    node1:
+        container_name: db_node1
+        image: mysql/mysql-cluster
+        networks:
+            database_net:
+                ipv4_address: 172.28.0.3
+        command: ndbd --ndb-nodeid=3
+        depends_on:
+            - database-manager
+        volumes:
+            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/my.cnf:/etc/my.cnf"
+            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
+
+
+    node2:
+        container_name: db_node2
+        image: mysql/mysql-cluster
+        networks:
+            database_net:
+                ipv4_address: 172.28.0.4
+        command: ndbd --ndb-nodeid=4
+        depends_on:
+            - database-manager
+        volumes:
+            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/my.cnf:/etc/my.cnf"
+            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
+
+
+    database-server:
+        container_name: db_server
+        image: mysql/mysql-cluster
+        networks:
+            database_net:
+                ipv4_address: 172.28.0.10
+        environment:
+            - MYSQL_ALLOW_EMPTY_PASSWORD=true
+            - MYSQL_DATABASE=my_db
+            - MYSQL_USER=my_user
+        ports:
+            - "3307:3306"
+        command: mysqld
+        volumes:
+            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/my.cnf:/etc/my.cnf"
+            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
+
+
+networks:
+    database_net:
+        ipam:
+            config:
+                - subnet: 172.28.0.0/16
