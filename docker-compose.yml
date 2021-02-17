@@ -11,8 +11,8 @@ services:
         ports:
             - "1186:1186"
         volumes:
-            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/my.cnf:/etc/my.cnf"
-            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
+            - "./cnf/my.cnf:/etc/my.cnf"
+            - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
 
     node1:
         container_name: db_node1
@@ -24,8 +24,8 @@ services:
         depends_on:
             - database-manager
         volumes:
-            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/my.cnf:/etc/my.cnf"
-            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
+            - "./cnf/my.cnf:/etc/my.cnf"
+            - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
 
 
     node2:
@@ -38,8 +38,8 @@ services:
         depends_on:
             - database-manager
         volumes:
-            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/my.cnf:/etc/my.cnf"
-            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
+            - "./cnf/my.cnf:/etc/my.cnf"
+            - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
 
 
     database-server:
@@ -56,8 +56,8 @@ services:
             - "3307:3306"
         command: mysqld
         volumes:
-            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/my.cnf:/etc/my.cnf"
-            - "/mnt/c/Users/Yahui/Desktop/科展/實作/cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
+            - "./cnf/my.cnf:/etc/my.cnf"
+            - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
 
 
 networks:
