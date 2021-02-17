@@ -7,7 +7,7 @@ services:
         networks:
             database_net:
                 ipv4_address: 172.50.0.2
-        command: ndbd #ndb_mgmd --ndb-nodeid=2
+        command: ndb_mgmd --ndb-nodeid=2
         ports:
             - "1186:1186"
         volumes:
