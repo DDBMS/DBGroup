@@ -6,7 +6,7 @@ services:
         image: mysql/mysql-cluster
         networks:
             database_net:
-                ipv4_address: 172.28.0.2
+                ipv4_address: 172.50.0.2
         command: ndbd #ndb_mgmd --ndb-nodeid=2
         ports:
             - "1186:1186"
@@ -19,7 +19,7 @@ services:
         image: mysql/mysql-cluster
         networks:
             database_net:
-                ipv4_address: 172.28.0.3
+                ipv4_address: 172.50.0.3
         command: ndbd --ndb-nodeid=3
         depends_on:
             - database-manager
@@ -33,7 +33,7 @@ services:
         image: mysql/mysql-cluster
         networks:
             database_net:
-                ipv4_address: 172.28.0.4
+                ipv4_address: 172.50.0.4
         command: ndbd --ndb-nodeid=4
         depends_on:
             - database-manager
@@ -47,7 +47,7 @@ services:
         image: mysql/mysql-cluster
         networks:
             database_net:
-                ipv4_address: 172.28.0.10
+                ipv4_address: 172.50.0.10
         environment:
             - MYSQL_ALLOW_EMPTY_PASSWORD=true
             - MYSQL_DATABASE=my_db
@@ -64,4 +64,4 @@ networks:
     database_net:
         ipam:
             config:
-                - subnet: 172.28.0.0/16
+                - subnet: 172.50.0.0/16
