@@ -19,11 +19,3 @@ datadir=/var/lib/mysql
 [ndbd]
 hostname=172.50.0.5
 datadir=/var/lib/mysql
-
-[ndbd]
-hostname=172.50.0.6
-datadir=/var/lib/mysql
-
-[ndbd]
-hostname=172.50.0.7
-datadir=/var/lib/mysql
