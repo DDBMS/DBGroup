@@ -15,7 +15,7 @@ services:
 
     node:
         image: mysql/mysql-cluster
-        command: ndbd --ndb-nodeid={{.Task.Slot}}
+        command: ndbd # --ndb-nodeid={{.Task.Slot}}
         networks:
             - database_net
         depends_on:
