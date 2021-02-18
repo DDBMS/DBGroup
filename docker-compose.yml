@@ -13,31 +13,16 @@ services:
             - "./cnf/my.cnf:/etc/my.cnf"
             - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
 
-    node1:
+    node:
         image: mysql/mysql-cluster
+        command: ndbd --ndb-nodeid={{.Task.Slot}}
         networks:
-            database_net:
-                ipv4_address: 172.50.0.3
-        command: ndbd --ndb-nodeid=3
+            - database_net
         depends_on:
             - database-manager
         volumes:
             - "./cnf/my.cnf:/etc/my.cnf"
             - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
-
-
-    node2:
-        image: mysql/mysql-cluster
-        networks:
-            database_net:
-                ipv4_address: 172.50.0.4
-        command: ndbd --ndb-nodeid=4
-        depends_on:
-            - database-manager
-        volumes:
-            - "./cnf/my.cnf:/etc/my.cnf"
-            - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
-
 
     database-server:
         image: mysql/mysql-cluster

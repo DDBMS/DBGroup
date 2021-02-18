@@ -11,12 +11,12 @@ datadir=/var/lib/mysql
 
 [ndbd]
 NodeId=3
-hostname=172.50.0.3
+hostname=node_1
 datadir=/var/lib/mysql
 
 [ndbd]
 NodeId=4
-hostname=172.50.0.4
+hostname=node_2
 datadir=/var/lib/mysql
 
 [mysqld]
