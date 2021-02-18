@@ -33,7 +33,7 @@ services:
             - MYSQL_ALLOW_EMPTY_PASSWORD=true
             - MYSQL_DATABASE=my_db
             - MYSQL_USER=my_user
-            - MYSQL_ROOT_PASSWORD: root_toor
+            - MYSQL_ROOT_PASSWORD=root_toor
             - MYSQL_ROOT_HOST=%
         ports:
             - "3307:3306"
