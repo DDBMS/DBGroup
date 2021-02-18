@@ -2,7 +2,7 @@
 NoOfReplicas=2
 DataMemory=80M
 IndexMemory=18M
-
+hostname=node
 
 [ndb_mgmd]
 NodeId=2
@@ -10,13 +10,11 @@ hostname=172.50.0.2
 datadir=/var/lib/mysql
 
 [ndbd]
-NodeId=3
-hostname=node_1
+hostname=dbgroup_node_1
 datadir=/var/lib/mysql
 
 [ndbd]
-NodeId=4
-hostname=node_2
+hostname=dbgroup_node_2
 datadir=/var/lib/mysql
 
 [mysqld]
