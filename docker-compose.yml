@@ -2,7 +2,6 @@ version: '3'
 
 services:
     database-manager:
-        container_name: db_manager
         image: mysql/mysql-cluster
         networks:
             database_net:
@@ -15,7 +14,6 @@ services:
             - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
 
     node1:
-        container_name: db_node1
         image: mysql/mysql-cluster
         networks:
             database_net:
@@ -29,7 +27,6 @@ services:
 
 
     node2:
-        container_name: db_node2
         image: mysql/mysql-cluster
         networks:
             database_net:
@@ -43,7 +40,6 @@ services:
 
 
     database-server:
-        container_name: db_server
         image: mysql/mysql-cluster
         networks:
             database_net:
