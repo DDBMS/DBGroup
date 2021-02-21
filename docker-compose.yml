@@ -5,10 +5,10 @@ services:
         image: mysql/mysql-cluster
         networks:
             database_net:
-                ipv4_address: 172.50.0.2
+                ipv4_address: ${IP}.0.2
         command: ndb_mgmd --ndb-nodeid=2
         ports:
-            - "1186:1186"
+            - "${IP}:1186:1186"
         volumes:
             - "./cnf/my.cnf:/etc/my.cnf"
             - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
@@ -28,7 +28,7 @@ services:
         image: mysql/mysql-cluster
         networks:
             database_net:
-                ipv4_address: 172.50.0.3
+                ipv4_address: ${IP}.0.3
         environment:
             - MYSQL_ALLOW_EMPTY_PASSWORD=true
             - MYSQL_DATABASE=my_db
@@ -36,7 +36,7 @@ services:
             - MYSQL_ROOT_PASSWORD=root_toor
             - MYSQL_ROOT_HOST=%
         ports:
-            - "3307:3306"
+            - "${IP}:3306:3306"
         command: mysqld --ndb-nodeid=3
         volumes:
             - "./cnf/my.cnf:/etc/my.cnf"
@@ -47,4 +47,4 @@ networks:
     database_net:
         ipam:
             config:
-                - subnet: 172.50.0.0/16
+                - subnet: ${IP}.0.0/16
