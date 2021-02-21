@@ -8,7 +8,7 @@ services:
                 ipv4_address: ${IP}.0.2
         command: ndb_mgmd --ndb-nodeid=2
         ports:
-            - "${IP}:1186:1186"
+            - "${IP}:${MGM_PORT}:1186"
         volumes:
             - "./cnf/my.cnf:/etc/my.cnf"
             - "./cnf/mysql-cluster.cnf:/etc/mysql-cluster.cnf"
@@ -36,7 +36,7 @@ services:
             - MYSQL_ROOT_PASSWORD=root_toor
             - MYSQL_ROOT_HOST=%
         ports:
-            - "${IP}:3306:3306"
+            - "${IP}:${SRV_PORT}:3306"
         command: mysqld --ndb-nodeid=3
         volumes:
             - "./cnf/my.cnf:/etc/my.cnf"
