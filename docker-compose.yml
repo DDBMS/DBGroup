@@ -4,7 +4,7 @@ services:
     database-manager:
         image: mysql/mysql-cluster
         networks:
-            database_net:
+            default:
                 ipv4_address: ${IP}.0.2
         command: ndb_mgmd --ndb-nodeid=2
         ports:
@@ -17,7 +17,7 @@ services:
         image: mysql/mysql-cluster
         command: ndbd 
         networks:
-            - database_net
+            - default
         depends_on:
             - database-manager
         volumes:
@@ -27,7 +27,7 @@ services:
     database-server:
         image: mysql/mysql-cluster
         networks:
-            database_net:
+            default:
                 ipv4_address: ${IP}.0.3
         environment:
             - MYSQL_ALLOW_EMPTY_PASSWORD=true
@@ -44,7 +44,8 @@ services:
 
 
 networks:
-    database_net:
+    default:
         ipam:
+            driver: default
             config:
                 - subnet: ${IP}.0.0/16
